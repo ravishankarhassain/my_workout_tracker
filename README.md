@@ -128,25 +128,35 @@ this phone's browser.
   (Mon=A, Tue=B, Wed=Rest+Walk, Thu=C, Fri=D, Sat/Sun=Rest), stats, a body
   weight quick-log, and the weekly schedule.
 - **Session** — log weight (kg) and reps for each set, tap the checkmark to
-  mark a set done, add notes about how it felt, then "Save & Finish". Tap
-  **"+ Add"** to add any extra exercise on the fly — tick "Always include in
-  Day X" to have it appear automatically every time you do that day, and
-  optionally attach a video guide link to it.
+  mark a set done, add notes about how it felt, then "✓ Finish Workout". Progress
+  is auto-saved as a draft on every change — if you close the app mid-session,
+  your work is waiting when you reopen it. Tap **"+ Add"** to add any extra
+  exercise on the fly — tick "Always include in Day X" to have it appear
+  automatically every time you do that day, and optionally attach a video guide
+  link to it.
+- **Exercise badges** — each exercise card shows its type (Compound / Isolation),
+  target muscle group, and sets × reps target in a single badge row. Compound
+  exercises are highlighted in amber; isolation in cyan.
+- **Alternative exercises** — exercises with a safer alternative (e.g. Leg Press
+  Calf Raises → Seated Calf Raise Machine, Stiff Legged Deadlift → Lying Leg
+  Curl Machine) show an inline **▼ ALT** button next to the exercise name. Tap
+  it to see the alternative with the reason it exists. Tap **⇄ Swap to this
+  exercise** to replace it for the current session — the nav chip, set count, and
+  all tracking update automatically. Tap **↩ [original name]** on the swapped
+  card to revert.
 - **Exercise video guides** — every exercise title is a clickable link
   (with a ▶ icon) that opens a video/technique guide in a new tab — mostly
   Muscle & Strength's exercise library, with a YouTube search fallback for
-  machine-specific movements. Custom exercises link to whatever URL you
-  provide. These links also appear in History and Calendar session details.
-  Tap the **✏️** next to any exercise title to replace its video link with
-  your own — useful if the default link isn't quite right. Your link is
-  saved and reused every time that exercise appears, with a "Reset to
-  default" option to revert.
+  machine-specific movements. Tap the **✏️** next to any exercise title to
+  replace its video link with your own. Your link is saved and reused every time
+  that exercise appears, with a "Reset to default" option to revert.
 - **📖 Tips & Guide** — a floating button in the bottom-right corner on
   every screen opens a reference panel covering: exercise order (compounds
-  before isolation, abs last), weight progression (pyramid down / heavy to
-  light), alternative exercises for dizziness-prone movements with the
-  medical note about seeing a GP, the weekly walk/rest rhythm, and
-  nutrition guidance for recomposition.
+  before isolation, abs last), weight progression, alternative exercises for
+  dizziness-prone movements with the medical GP note, the weekly walk/rest
+  rhythm, and nutrition guidance for recomposition.
+- **Light / Dark theme** — toggle in the ⚙ avatar menu (top right). Preference
+  is saved across sessions.
 - **Calendar** — monthly view of every training day. Completed sessions are
   colour-coded by day type (A/B/C/D), missed training days are flagged in
   red, and tapping any date shows that session's full details.
@@ -173,7 +183,26 @@ file again in the SQL Editor — the `create table if not exists` and
 `alter table ... add column if not exists` statements are safe to re-run and
 won't affect your existing data.
 
+## How offline sync works
+
+Every finished session, body weight entry, custom exercise, and video override
+is saved to your phone instantly (works offline). If the Supabase push fails
+(no network), the item goes into a local retry queue. The app retries
+automatically when:
+
+- Your device comes back online (`online` event)
+- Every 30 seconds while the app is open
+- On sign-in
+
+An amber **"⏳ N pending sync"** badge appears on the Home screen and inside
+the ⚙ menu whenever unsynced items are waiting. Tap it to force a retry now.
+
 ## Updating the app later
 
 If you ask Claude to make changes, re-upload the updated files to your
 GitHub repo. Your `config.js` and existing workout data are unaffected.
+
+**Important — cache busting:** after uploading `app.js` or `styles.css`,
+increment the version number in `index.html` (`app.js?v=N` → `app.js?v=N+1`
+and same for `styles.css`). Without this, users' browsers may continue
+serving the old cached file via the service worker.

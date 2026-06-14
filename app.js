@@ -6,54 +6,61 @@
 const PLAN = {
   A: {
     label: "Day A", focus: "Push Dominant", accent: "#3B82F6",
+    note: "Lead with heavy compound push, support with pull and hinge.",
     exercises: [
-      { name: "Squat",                 sets: 4, reps: "10", video: "https://www.muscleandstrength.com/exercises/squat.html" },
-      { name: "Bench Press",           sets: 4, reps: "10", video: "https://www.muscleandstrength.com/exercises/barbell-bench-press.html" },
-      { name: "Barbell Row",           sets: 3, reps: "12", video: "https://www.muscleandstrength.com/exercises/bent-over-barbell-row.html" },
-      { name: "Seated Military Press", sets: 3, reps: "10", video: "https://www.muscleandstrength.com/exercises/seated-military-press.html" },
-      { name: "Barbell Bicep Curl",    sets: 3, reps: "10", video: "https://www.muscleandstrength.com/exercises/barbell-curl.html" },
-      { name: "Dips",                  sets: 3, reps: "10", video: "https://www.muscleandstrength.com/exercises/dips.html" },
-      { name: "Leg Press Calf Raises", sets: 3, reps: "12", video: "https://www.muscleandstrength.com/exercises/leg-press-calf-raise.html" },
-      { name: "Hanging Leg Raises",    sets: 2, reps: "12", isAbs: true, video: "https://www.muscleandstrength.com/exercises/hanging-leg-raise.html" },
-      { name: "Plank",                 sets: 2, reps: "45s", isAbs: true, video: "https://www.muscleandstrength.com/exercises/plank.html" },
+      { name: "Squat",                 sets: 4, reps: "10", muscles: "Quads · Glutes",          type: "compound",  video: "https://www.muscleandstrength.com/exercises/squat.html" },
+      { name: "Bench Press",           sets: 4, reps: "10", muscles: "Chest",                   type: "compound",  video: "https://www.muscleandstrength.com/exercises/barbell-bench-press.html" },
+      { name: "Barbell Row",           sets: 3, reps: "12", muscles: "Back",                    type: "compound",  video: "https://www.muscleandstrength.com/exercises/bent-over-barbell-row.html" },
+      { name: "Seated Military Press", sets: 3, reps: "10", muscles: "Shoulders",               type: "compound",  video: "https://www.muscleandstrength.com/exercises/seated-military-press.html" },
+      { name: "Barbell Bicep Curl",    sets: 3, reps: "10", muscles: "Biceps",                  type: "isolation", video: "https://www.muscleandstrength.com/exercises/barbell-curl.html" },
+      { name: "Dips",                  sets: 3, reps: "10", muscles: "Triceps · Chest",         type: "compound",  video: "https://www.muscleandstrength.com/exercises/dips.html" },
+      { name: "Leg Press Calf Raises", sets: 3, reps: "12", muscles: "Calves",                  type: "isolation", video: "https://www.muscleandstrength.com/exercises/leg-press-calf-raise.html",
+        alt: { name: "Seated Calf Raise Machine", sets: 3, reps: "12", reason: "Seated position avoids blood pressure spike and dizziness risk" } },
+      { name: "Hanging Leg Raises",    sets: 2, reps: "12", muscles: "Abs · Core",              type: "isolation", isAbs: true, video: "https://www.muscleandstrength.com/exercises/hanging-leg-raise.html" },
+      { name: "Plank",                 sets: 2, reps: "45s", muscles: "Core · Stabilisers",     type: "isolation", isAbs: true, video: "https://www.muscleandstrength.com/exercises/plank.html" },
     ],
   },
   B: {
     label: "Day B", focus: "Pull Dominant", accent: "#10B981",
+    note: "Hinge and pull emphasis. Lighter knee-dominant work supports recovery.",
     exercises: [
-      { name: "Deadlift",               sets: 4, reps: "10", video: "https://www.muscleandstrength.com/exercises/deadlift.html" },
-      { name: "Incline Bench Press",    sets: 3, reps: "12", video: "https://www.muscleandstrength.com/exercises/incline-barbell-bench-press.html" },
-      { name: "Lat Pulldown",           sets: 4, reps: "8", video: "https://www.muscleandstrength.com/exercises/lat-pulldown.html" },
-      { name: "Lateral Raise",          sets: 3, reps: "12", video: "https://www.muscleandstrength.com/exercises/dumbbell-lateral-raise.html" },
-      { name: "Leg Curl",               sets: 3, reps: "12", video: "https://www.muscleandstrength.com/exercises/lying-leg-curls.html" },
-      { name: "Rope Cable Hammer Curl", sets: 3, reps: "12", video: "https://www.youtube.com/results?search_query=Rope+Cable+Hammer+Curl+exercise+tutorial" },
-      { name: "Seated French Press",    sets: 3, reps: "12", video: "https://www.youtube.com/results?search_query=Seated+Overhead+Tricep+Extension+exercise+tutorial" },
+      { name: "Deadlift",               sets: 4, reps: "10", muscles: "Posterior Chain",          type: "compound",  video: "https://www.muscleandstrength.com/exercises/deadlift.html" },
+      { name: "Incline Bench Press",    sets: 3, reps: "12", muscles: "Upper Chest",              type: "compound",  video: "https://www.muscleandstrength.com/exercises/incline-barbell-bench-press.html" },
+      { name: "Lat Pulldown",           sets: 4, reps: "8",  muscles: "Lats",                    type: "compound",  video: "https://www.muscleandstrength.com/exercises/lat-pulldown.html" },
+      { name: "Lateral Raise",          sets: 3, reps: "12", muscles: "Side Delts",              type: "isolation", video: "https://www.muscleandstrength.com/exercises/dumbbell-lateral-raise.html" },
+      { name: "Leg Curl",               sets: 3, reps: "12", muscles: "Hamstrings",              type: "isolation", video: "https://www.muscleandstrength.com/exercises/lying-leg-curls.html",
+        alt: { name: "Lying Leg Curl Machine", sets: 3, reps: "12", reason: "Horizontal position eliminates dizziness risk entirely — best option if you experience lightheadedness" } },
+      { name: "Rope Cable Hammer Curl", sets: 3, reps: "12", muscles: "Biceps · Brachialis",     type: "isolation", video: "https://www.youtube.com/results?search_query=Rope+Cable+Hammer+Curl+exercise+tutorial" },
+      { name: "Seated French Press",    sets: 3, reps: "12", muscles: "Triceps",                 type: "isolation", video: "https://www.youtube.com/results?search_query=Seated+Overhead+Tricep+Extension+exercise+tutorial" },
     ],
   },
   C: {
     label: "Day C", focus: "Push Dominant", accent: "#8B5CF6",
+    note: "Variation of Day A. Different angles for a second weekly stimulus per muscle.",
     exercises: [
-      { name: "Machine Hack Squat",          sets: 3, reps: "12", video: "https://www.youtube.com/results?search_query=Machine+Hack+Squat+exercise+tutorial" },
-      { name: "Hammer Strength Chest Press", sets: 3, reps: "8", video: "https://www.muscleandstrength.com/exercises/hammer-strength-bench-press.html" },
-      { name: "Cable Row",                   sets: 3, reps: "12", video: "https://www.muscleandstrength.com/exercises/seated-cable-rows.html" },
-      { name: "Front Raise",                 sets: 3, reps: "12", video: "https://www.muscleandstrength.com/exercises/dumbbell-front-raise.html" },
-      { name: "Face Pulls",                  sets: 3, reps: "15", video: "https://www.muscleandstrength.com/exercises/cable-face-pull" },
-      { name: "Preacher Curl",               sets: 3, reps: "10", video: "https://www.muscleandstrength.com/exercises/preacher-curl.html" },
-      { name: "Seated Calf Raises",          sets: 3, reps: "12", video: "https://www.muscleandstrength.com/exercises/seated-calf-raise.html" },
-      { name: "Cable Crunch",                sets: 2, reps: "15", isAbs: true, video: "https://www.muscleandstrength.com/exercises/cable-crunch.html" },
-      { name: "Hanging Leg Raises",          sets: 2, reps: "12", isAbs: true, video: "https://www.muscleandstrength.com/exercises/hanging-leg-raise.html" },
+      { name: "Machine Hack Squat",          sets: 3, reps: "12", muscles: "Quads",                      type: "compound",  video: "https://www.youtube.com/results?search_query=Machine+Hack+Squat+exercise+tutorial" },
+      { name: "Hammer Strength Chest Press", sets: 3, reps: "8",  muscles: "Chest",                      type: "compound",  video: "https://www.muscleandstrength.com/exercises/hammer-strength-bench-press.html" },
+      { name: "Cable Row",                   sets: 3, reps: "12", muscles: "Mid Back",                   type: "compound",  video: "https://www.muscleandstrength.com/exercises/seated-cable-rows.html" },
+      { name: "Front Raise",                 sets: 3, reps: "12", muscles: "Front Delts",                type: "isolation", video: "https://www.muscleandstrength.com/exercises/dumbbell-front-raise.html" },
+      { name: "Face Pulls",                  sets: 3, reps: "15", muscles: "Rear Delts · Rotator Cuff",  type: "isolation", video: "https://www.muscleandstrength.com/exercises/cable-face-pull" },
+      { name: "Preacher Curl",               sets: 3, reps: "10", muscles: "Biceps",                    type: "isolation", video: "https://www.muscleandstrength.com/exercises/preacher-curl.html" },
+      { name: "Seated Calf Raises",          sets: 3, reps: "12", muscles: "Soleus",                    type: "isolation", video: "https://www.muscleandstrength.com/exercises/seated-calf-raise.html" },
+      { name: "Cable Crunch",                sets: 2, reps: "15", muscles: "Abs",                       type: "isolation", isAbs: true, video: "https://www.muscleandstrength.com/exercises/cable-crunch.html" },
+      { name: "Hanging Leg Raises",          sets: 2, reps: "12", muscles: "Abs · Hip Flexors",          type: "isolation", isAbs: true, video: "https://www.muscleandstrength.com/exercises/hanging-leg-raise.html" },
     ],
   },
   D: {
     label: "Day D", focus: "Pull Dominant", accent: "#F59E0B",
+    note: "Variation of Day B. Higher rep finishers to chase definition and pump.",
     exercises: [
-      { name: "Stiff Legged Deadlift", sets: 4, reps: "10", video: "https://www.muscleandstrength.com/exercises/stiff-legged-deadlift.html" },
-      { name: "Pull Up",               sets: 3, reps: "10", video: "https://www.muscleandstrength.com/exercises/pull-up.html" },
-      { name: "Dumbbell Lunge",        sets: 3, reps: "8", video: "https://www.muscleandstrength.com/exercises/dumbbell-lunge.html" },
-      { name: "Hyperextension",        sets: 3, reps: "12", video: "https://www.muscleandstrength.com/exercises/hyperextension.html" },
-      { name: "Cable Crossover",       sets: 3, reps: "12", video: "https://www.muscleandstrength.com/exercises/cable-crossover.html" },
-      { name: "Barbell Shrugs",        sets: 4, reps: "12", video: "https://www.muscleandstrength.com/exercises/barbell-shrug.html" },
-      { name: "Reverse Pec Deck",      sets: 3, reps: "12", video: "https://www.youtube.com/results?search_query=Reverse+Pec+Deck+Rear+Delt+Fly+exercise+tutorial" },
+      { name: "Stiff Legged Deadlift", sets: 4, reps: "10", muscles: "Hamstrings · Glutes",   type: "compound",  video: "https://www.muscleandstrength.com/exercises/stiff-legged-deadlift.html",
+        alt: { name: "Lying Leg Curl Machine", sets: 3, reps: "12", reason: "Same hamstring stimulus with zero blood pressure spike. Use this until cleared by GP." } },
+      { name: "Pull Up",               sets: 3, reps: "10", muscles: "Lats · Biceps",          type: "compound",  video: "https://www.muscleandstrength.com/exercises/pull-up.html" },
+      { name: "Dumbbell Lunge",        sets: 3, reps: "8",  muscles: "Quads · Glutes",         type: "compound",  video: "https://www.muscleandstrength.com/exercises/dumbbell-lunge.html" },
+      { name: "Hyperextension",        sets: 3, reps: "12", muscles: "Lower Back · Glutes",    type: "isolation", video: "https://www.muscleandstrength.com/exercises/hyperextension.html" },
+      { name: "Cable Crossover",       sets: 3, reps: "12", muscles: "Chest",                  type: "isolation", video: "https://www.muscleandstrength.com/exercises/cable-crossover.html" },
+      { name: "Barbell Shrugs",        sets: 4, reps: "12", muscles: "Traps",                  type: "isolation", video: "https://www.muscleandstrength.com/exercises/barbell-shrug.html" },
+      { name: "Reverse Pec Deck",      sets: 3, reps: "12", muscles: "Rear Delts",             type: "isolation", video: "https://www.youtube.com/results?search_query=Reverse+Pec+Deck+Rear+Delt+Fly+exercise+tutorial" },
     ],
   },
 };
@@ -62,6 +69,29 @@ const DAYS = ["A", "B", "C", "D"];
 const SCHEDULE = { Mon: "A", Tue: "B", Wed: null, Thu: "C", Fri: "D", Sat: null, Sun: null };
 const WEEKDAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 const C_MUTED = "#6B7280", C_FAINT = "#374151", C_GREEN = "#10B981", C_RED = "#EF4444", C_TEXT = "#F9FAFB";
+
+// ── Theme management ─────────────────────────────────────────────
+const THEME_KEY = "leanMassTrackerTheme";
+function applyTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  try { localStorage.setItem(THEME_KEY, theme); } catch(e) {}
+}
+applyTheme(localStorage.getItem(THEME_KEY) || "dark");
+function getTheme() { return document.documentElement.getAttribute("data-theme") || "dark"; }
+
+// ── Session draft (persist in-progress session across reloads) ───
+const SESSION_DRAFT_KEY = "leanMassTrackerSessionDraft";
+function saveSessionDraft() {
+  if (!state || !state.session) return;
+  try { localStorage.setItem(SESSION_DRAFT_KEY, JSON.stringify(state.session)); } catch(e) {}
+}
+function clearSessionDraft() { localStorage.removeItem(SESSION_DRAFT_KEY); }
+function loadSessionDraft() {
+  try {
+    const raw = localStorage.getItem(SESSION_DRAFT_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch(e) { return null; }
+}
 
 // Quick video search link for any exercise name (used for custom exercises
 // and as a fallback when a specific guide page isn't known)
@@ -93,12 +123,19 @@ function getVideoUrl(exName, dayKey, session) {
 }
 
 // ── Date helpers ─────────────────────────────────────────────
-const todayStr = () => new Date().toISOString().split("T")[0];
+// Always use local calendar date — never toISOString() which converts to UTC
+// and causes off-by-one errors for timezones east of UTC (e.g. IST UTC+5:30)
+const fmtDate = (d) => {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+};
+const todayStr = () => fmtDate(new Date());
 const todayDayKey = () => {
   const d = WEEKDAYS[(new Date().getDay() + 6) % 7]; // getDay: 0=Sun -> map to Mon..Sun
   return SCHEDULE[d] || null;
 };
-const fmtDate = (d) => d.toISOString().split("T")[0];
 function getMonday(d) {
   const date = new Date(d);
   const day = (date.getDay() + 6) % 7; // 0 = Monday
@@ -407,6 +444,9 @@ let state = {
   showWeightInput: false,
   showGuide: false,
   showVideoEdit: false,
+  showUserMenu: false,
+  showAlt: false,
+  confirmModal: null,   // { icon, title, message, yesLabel, yesAction, danger }
   historyDay: "A",
   progressDay: "A",
   progressEx: "Squat",
@@ -533,11 +573,13 @@ function render() {
 
   if (["home", "calendar", "history", "progress"].includes(state.screen)) html += renderNav();
 
-  // Guide FAB + overlay — accessible from every screen except loading/login
+  // Guide FAB + overlay + user avatar — accessible from every screen except loading/login
   if (!["loading", "login"].includes(state.screen)) {
     const bottomOffset = ["home", "calendar", "history", "progress"].includes(state.screen) ? 94 : 20;
     html += `<button data-action="toggleGuide" class="guide-fab" style="bottom:${bottomOffset}px" title="Tips & Guide">📖</button>`;
     if (state.showGuide) html += renderGuideOverlay();
+    html += renderUserAvatar();
+    html += renderConfirmModal();
   }
 
   app.innerHTML = html;
@@ -545,7 +587,80 @@ function render() {
 }
 
 function renderLoading() {
-  return `<div class="loading">Loading your tracker...</div>`;
+  return `<div class="loading"><div class="loading-spinner"></div>Loading your tracker...</div>`;
+}
+
+// ── Custom confirm modal ─────────────────────────────────────────
+function renderConfirmModal() {
+  if (!state.confirmModal) return "";
+  const { icon, title, message, yesLabel, noLabel, yesAction, danger } = state.confirmModal;
+  const yesColor = danger ? "#EF4444" : C_GREEN;
+  return `<div class="confirm-overlay" data-action="dismissModal">
+    <div class="confirm-modal" onclick="event.stopPropagation()">
+      ${icon ? `<div class="confirm-icon">${icon}</div>` : ""}
+      <p class="confirm-title">${esc(title)}</p>
+      <p class="confirm-msg">${esc(message)}</p>
+      <div class="confirm-actions">
+        ${btn({ label: yesLabel || "Confirm", onclick: yesAction, color: yesColor, full: true })}
+        ${btn({ label: noLabel || "Cancel", onclick: "dismissModal", color: C_MUTED, outline: true, full: true })}
+      </div>
+    </div>
+  </div>`;
+}
+
+// ── User avatar button + dropdown menu ───────────────────────────
+function renderUserAvatar() {
+  const isLight = getTheme() === "light";
+
+  let avatarContent, avatarClass;
+  if (state.user) {
+    const email = state.user.email || "";
+    avatarContent = (email[0] || "U").toUpperCase();
+    avatarClass = "user-avatar-btn";
+  } else {
+    avatarContent = "⚙";
+    avatarClass = "user-avatar-btn local-mode";
+  }
+
+  let html = `<button class="${avatarClass}" data-action="toggleUserMenu" title="Account &amp; Settings">${avatarContent}</button>`;
+
+  if (!state.showUserMenu) return html;
+
+  const pendingCount = (state.data.pendingSync || []).length;
+
+  html += `<div class="user-menu-overlay" data-action="closeUserMenu"></div>
+  <div class="user-menu-panel">
+    <div class="user-menu-header">`;
+
+  if (state.user) {
+    html += `<p class="user-menu-email">☁️ ${esc(state.user.email || "")}</p>
+      <p class="user-menu-status"><span class="sync-dot"></span> Syncing to Supabase</p>`;
+  } else {
+    html += `<p class="user-menu-email">📱 Local Mode</p>
+      <p class="user-menu-status">No cloud sync configured</p>`;
+  }
+
+  html += `</div>
+    <div class="user-menu-body">
+      <div class="user-menu-row">
+        <span class="user-menu-row-label">☀️&nbsp; Light mode</span>
+        <div class="toggle-switch ${isLight ? "on" : ""}" data-action="toggleTheme"><div class="toggle-knob"></div></div>
+      </div>`;
+
+  if (pendingCount > 0) {
+    html += `<div class="user-menu-divider"></div>
+      <button class="sync-badge-menu" data-action="retrySync">
+        ⏳ ${pendingCount} pending sync${pendingCount > 1 ? "s" : ""} — tap to retry
+      </button>`;
+  }
+
+  if (state.user) {
+    html += `<div class="user-menu-divider"></div>
+      <button class="user-menu-btn danger" data-action="signOut">🚪 Sign out</button>`;
+  }
+
+  html += `</div></div>`;
+  return html;
 }
 
 function renderLogin() {
@@ -577,6 +692,10 @@ function renderNav() {
     { id: "progress", icon: "📈", label: "Progress" },
   ];
   return `<nav class="bottom-nav">
+    <div class="nav-brand">
+      <span class="nav-brand-icon">💪</span>
+      <span class="nav-brand-name">Lean Mass</span>
+    </div>
     ${tabs.map(t => `
       <button class="nav-btn ${state.screen === t.id ? "active" : ""}" data-action="nav:${t.id}">
         <span class="icon">${t.icon}</span>
@@ -647,15 +766,12 @@ function renderHome() {
   const weekSessions = data.sessions.filter(s => new Date(s.date) >= weekAgo).length;
 
   let html = `<div class="page">
-    <div style="display:flex;justify-content:space-between;align-items:flex-start">
-      <div>
-        <p class="eyebrow">Your 6-Week Plan</p>
-        <h1 class="h1">Lean Mass Tracker</h1>
-      </div>
-      ${renderAccountBadge()}
+    <div style="padding-right:52px">
+      <p class="eyebrow">Your 6-Week Plan</p>
+      <h1 class="h1">Lean Mass Tracker</h1>
     </div>
 
-    <div class="stats-row" style="margin-top:24px">
+    <div class="stats-row" style="margin-top:22px">
       <div class="stat-card"><p class="stat-value">${totalSessions}</p><p class="stat-label">Total Sessions</p></div>
       <div class="stat-card"><p class="stat-value">${weekSessions}</p><p class="stat-label">This Week</p></div>
       <div class="stat-card"><p class="stat-value">${weekSessions}/4</p><p class="stat-label">Streak</p></div>
@@ -757,6 +873,7 @@ function renderAccountBadge() {
 
 // ── SESSION SCREEN ───────────────────────────────────────────
 function startSession(dayKey) {
+  clearSessionDraft();
   const day = PLAN[dayKey];
   const sets = {};
   day.exercises.forEach(ex => {
@@ -778,9 +895,17 @@ function startSession(dayKey) {
   render();
 }
 
-// All exercises for the current session: plan exercises + any added on the fly
+// All exercises for the current session: plan exercises (with swaps applied) + custom
 function getSessionExercises(session) {
-  return [...PLAN[session.dayKey].exercises, ...(session.customExercises || [])];
+  const swaps = session.swappedExercises || {};
+  const planExs = PLAN[session.dayKey].exercises.map(ex => {
+    const swap = swaps[ex.name];
+    if (swap) {
+      return { ...ex, name: swap.altName, sets: swap.altSets, reps: swap.altReps, _swappedFrom: ex.name };
+    }
+    return ex;
+  });
+  return [...planExs, ...(session.customExercises || [])];
 }
 
 // All exercise names ever logged or remembered for a given day — used for Progress exercise picker
@@ -804,6 +929,7 @@ async function finishSession() {
   state.data.sessions.push(finished);
   saveLocalData(state.data);
   state.session = null;
+  clearSessionDraft();
   state.screen = "home";
   render();
 
@@ -829,29 +955,31 @@ function renderSession() {
   const completedSets = allSets.filter(s => s.done).length;
   const totalSets = allSets.length;
   const progress = totalSets > 0 ? (completedSets / totalSets) * 100 : 0;
+  const completedExercises = exercises.filter(e => {
+    const s = session.sets[e.name] || [];
+    return s.length > 0 && s.every(x => x.done);
+  }).length;
+  const totalExercises = exercises.length;
 
   let html = `<div class="page" style="padding-top:16px">
     <div class="session-header">
-      <div style="display:flex;align-items:center;gap:10px">
-        <button data-action="exitSession" style="background:none;border:1.5px solid ${C_FAINT};
-          border-radius:10px;width:36px;height:36px;color:${C_MUTED};font-size:16px;
-          cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0">←</button>
-        <div>
-          <p class="eyebrow" style="color:${day.accent}">${session.date}</p>
-          <h2 style="margin:2px 0 0;font-size:20px;font-weight:900">${day.label} — ${day.focus}</h2>
-        </div>
+      <button data-action="exitSession" class="back-btn">
+        <span class="back-btn-arrow">←</span> Back
+      </button>
+      <div class="session-title-block">
+        <p class="session-heading-line"><span style="color:${day.accent};font-weight:800">${session.date} · ${day.label}</span> · ${day.focus}</p>
       </div>
-      ${btn({ label: "Save & Finish", onclick: "finish", color: C_GREEN, small: true })}
     </div>
 
     <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:${progress}%;background:${day.accent}"></div></div>
-    <p class="progress-text" id="progress-text">${completedSets} / ${totalSets} sets completed</p>
+    <div class="progress-counters" id="progress-counters">
+      <span class="progress-pill" id="progress-ex"><strong>${completedExercises}/${totalExercises}</strong>&nbsp;exercises</span>
+      <span class="progress-pill" id="progress-sets"><strong>${completedSets}/${totalSets}</strong>&nbsp;sets</span>
+    </div>
 
     <div class="ex-nav" id="ex-nav">`;
 
-  exercises.forEach((e, i) => {
-    html += renderExChip(e, i, day, session);
-  });
+  exercises.forEach((e, i) => { html += renderExChip(e, i, day, session); });
 
   html += `<button class="ex-chip" data-action="toggleAddExercise" style="background:${C_FAINT};color:${C_MUTED};border-color:${C_FAINT};font-weight:900">+ Add</button>
     </div>`;
@@ -871,7 +999,7 @@ function renderSession() {
     <div class="nav-row">
       ${btn({ label: "← Previous", onclick: "prevEx", color: day.accent, outline: true, disabled: isFirst })}
       ${isLast
-        ? btn({ label: "✓ Finish Session", onclick: "finish", color: C_GREEN })
+        ? btn({ label: "✓ Finish Workout", onclick: "finish", color: C_GREEN })
         : btn({ label: "Next Exercise →", onclick: "nextEx", color: day.accent })
       }
     </div>
@@ -962,21 +1090,54 @@ function renderExerciseCard(ex, day, session, total) {
   const titleHtml = videoUrl
     ? `<a href="${esc(videoUrl)}" target="_blank" rel="noopener noreferrer" class="ex-title-link">${esc(ex.name)} <span class="video-icon">▶</span></a>`
     : esc(ex.name);
+  const muscleInfo = ex.muscles
+    ? badge(ex.muscles, "#6B7280", "rgba(107,114,128,0.15)")
+    : "";
+  const typeInfo = ex.type === "compound"
+    ? badge("Compound", "#F59E0B", "rgba(245,158,11,0.15)")
+    : ex.type === "isolation"
+      ? badge("Isolation", "#06B6D4", "rgba(6,182,212,0.15)")
+      : "";
+
+  const isSwapped = !!ex._swappedFrom;
+  // For a swapped exercise, look up original to find its alt details
+  const origEx = isSwapped ? PLAN[session.dayKey].exercises.find(e => e.name === ex._swappedFrom) : null;
+  const altOpen = state.showAlt && !!ex.alt && !isSwapped;
+
   let html = `<div class="ex-card" style="border-color:${borderColor}">
     <div class="ex-card-head">
       <div>
         <div class="ex-card-badges">
           ${ex.isAbs ? badge("ABS", "#7C3AED", hexA("#7C3AED","20")) : ""}
           ${isCustom ? badge("CUSTOM", "#06B6D4", hexA("#06B6D4","20")) : ""}
+          ${typeInfo}${muscleInfo}
           ${badge(`Target: ${ex.sets} × ${ex.reps}`, day.accent, hexA(day.accent,"20"))}
         </div>
-        <div style="display:flex;align-items:center;gap:8px">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
           <h3 class="ex-title">${titleHtml}</h3>
+          ${isSwapped
+            ? `<button data-action="revertSwap" class="alt-revert-btn" title="Revert to ${esc(ex._swappedFrom)}">↩ ${esc(ex._swappedFrom)}</button>`
+            : ex.alt
+              ? `<button data-action="toggleAlt" class="alt-inline-btn ${altOpen ? "open" : ""}">${altOpen ? "▲ ALT" : "▼ ALT"}</button>`
+              : ""}
           <button data-action="toggleVideoEdit" class="video-edit-btn" title="Edit video guide link">✏️</button>
         </div>
+        ${isSwapped ? `<p class="swap-note">Swapped from ${esc(ex._swappedFrom)}</p>` : ""}
       </div>
       <span class="ex-counter">${state.currentEx + 1} / ${total}</span>
-    </div>`;
+    </div>
+    ${altOpen && ex.alt ? `<div class="alt-panel">
+      <p class="alt-panel-label">⚠️ Alternative Exercise</p>
+      <div class="alt-panel-row">
+        <div class="alt-panel-info">
+          <p class="alt-panel-name">${esc(ex.alt.name)}</p>
+          <p class="alt-panel-reason">${esc(ex.alt.reason)}</p>
+        </div>
+        <div class="alt-panel-stat"><span>${ex.alt.sets}</span><small>Sets</small></div>
+        <div class="alt-panel-stat"><span>${ex.alt.reps}</span><small>Reps</small></div>
+      </div>
+      <button data-action="swapAlt" class="swap-btn">⇄ Swap to this exercise</button>
+    </div>` : ""}`;
 
   if (state.showVideoEdit) {
     html += `<div class="video-edit-form">
@@ -997,7 +1158,9 @@ function renderExerciseCard(ex, day, session, total) {
     html += renderSetRow(ex, si, set);
   });
 
-  html += `</div></div>`;
+  html += `</div>
+  <button class="save-ex-btn" data-action="saveExercise">💾 Save Progress</button>
+  </div>`;
   return html;
 }
 
@@ -1519,6 +1682,7 @@ function attachHandlers() {
     if (noteArea) {
       noteArea.addEventListener("input", (e) => {
         state.session.note = e.target.value;
+        saveSessionDraft();
       });
     }
   }
@@ -1545,30 +1709,38 @@ async function onAppClick(e) {
       const allSets = Object.values(state.session.sets).flat();
       const anyProgress = allSets.some(s => s.done || s.weight || s.reps) || state.session.note.trim();
       if (!anyProgress) {
-        // nothing logged yet — just discard and leave
         state.session = null;
+        clearSessionDraft();
         state.screen = "home";
         render();
         break;
       }
-      const wantsSave = confirm(
-        "Leave this session?\n\nTap OK to save your progress so far and exit, or Cancel to keep going."
-      );
-      if (wantsSave) {
-        finishSession();
-      }
+      state.confirmModal = {
+        icon: "🏋️",
+        title: "Leave this session?",
+        message: "Your progress is saved as a draft and will be here when you return.",
+        yesLabel: "Save & Exit",
+        noLabel: "Keep Going",
+        yesAction: "confirmFinishExit",
+      };
+      render();
       break;
     }
+    case "confirmFinishExit":
+      state.confirmModal = null;
+      finishSession();
+      break;
     case "goto":
       state.currentEx = parseInt(arg, 10);
+      state.showAlt = false;
       updateSessionExerciseView();
       break;
     case "prevEx":
-      if (state.currentEx > 0) { state.currentEx--; updateSessionExerciseView(); }
+      if (state.currentEx > 0) { state.currentEx--; state.showAlt = false; updateSessionExerciseView(); }
       break;
     case "nextEx": {
       const exercises = getSessionExercises(state.session);
-      if (state.currentEx < exercises.length - 1) { state.currentEx++; updateSessionExerciseView(); }
+      if (state.currentEx < exercises.length - 1) { state.currentEx++; state.showAlt = false; updateSessionExerciseView(); }
       break;
     }
     case "toggleDone": {
@@ -1576,11 +1748,42 @@ async function onAppClick(e) {
       const exercises = getSessionExercises(state.session);
       const ex = exercises[state.currentEx];
       state.session.sets[ex.name][si].done = !state.session.sets[ex.name][si].done;
+      saveSessionDraft();
       updateProgressAndChips();
       const row = document.querySelector(`.set-row[data-set="${si}"]`);
       const isDone = state.session.sets[ex.name][si].done;
       row.classList.toggle("done", isDone);
       target.classList.toggle("done", isDone);
+      break;
+    }
+    case "saveExercise": {
+      saveSessionDraft();
+      target.classList.add("saved");
+      target.innerHTML = "✓ Saved!";
+      setTimeout(() => {
+        if (target.isConnected) {
+          target.classList.remove("saved");
+          target.innerHTML = "💾 Save Progress";
+        }
+      }, 1600);
+      break;
+    }
+    case "dismissModal":
+      state.confirmModal = null;
+      render();
+      break;
+    case "toggleUserMenu":
+      state.showUserMenu = !state.showUserMenu;
+      render();
+      break;
+    case "closeUserMenu":
+      state.showUserMenu = false;
+      render();
+      break;
+    case "toggleTheme": {
+      const next = getTheme() === "dark" ? "light" : "dark";
+      applyTheme(next);
+      render();
       break;
     }
     case "historyDay":
@@ -1632,12 +1835,25 @@ async function onAppClick(e) {
       // action needed here.
       break;
     }
-    case "signOut": {
-      if (!confirm("Sign out? Your data stays saved in the cloud.")) return;
+    case "signOut":
+      state.confirmModal = {
+        icon: "🚪",
+        title: "Sign out?",
+        message: "Your workouts and progress are safely saved in the cloud.",
+        yesLabel: "Sign out",
+        noLabel: "Stay signed in",
+        yesAction: "confirmSignOut",
+        danger: true,
+      };
+      state.showUserMenu = false;
+      render();
+      break;
+    case "confirmSignOut": {
       await supabaseClient.auth.signOut();
       state.user = null;
       state.data = { ...EMPTY_DATA };
       state.screen = "login";
+      state.confirmModal = null;
       render();
       break;
     }
@@ -1652,6 +1868,33 @@ async function onAppClick(e) {
       state.showGuide = !state.showGuide;
       render();
       break;
+    case "toggleAlt":
+      state.showAlt = !state.showAlt;
+      refreshExerciseCard();
+      break;
+    case "swapAlt": {
+      const exercises = getSessionExercises(state.session);
+      const exToSwap = exercises[state.currentEx];
+      if (!exToSwap.alt) break;
+      if (!state.session.swappedExercises) state.session.swappedExercises = {};
+      state.session.swappedExercises[exToSwap.name] = { altName: exToSwap.alt.name, altSets: exToSwap.alt.sets, altReps: exToSwap.alt.reps };
+      if (!state.session.sets[exToSwap.alt.name]) {
+        state.session.sets[exToSwap.alt.name] = Array.from({ length: exToSwap.alt.sets }, () => ({ weight: "", reps: exToSwap.alt.reps, done: false }));
+      }
+      state.showAlt = false;
+      saveSessionDraft();
+      render();
+      break;
+    }
+    case "revertSwap": {
+      const exercises = getSessionExercises(state.session);
+      const exToRevert = exercises[state.currentEx];
+      if (!exToRevert._swappedFrom || !state.session.swappedExercises) break;
+      delete state.session.swappedExercises[exToRevert._swappedFrom];
+      saveSessionDraft();
+      render();
+      break;
+    }
     case "toggleVideoEdit":
       state.showVideoEdit = !state.showVideoEdit;
       refreshExerciseCard();
@@ -1780,6 +2023,7 @@ function onSetInput(e) {
   const si = parseInt(e.target.getAttribute("data-set"), 10);
   const field = e.target.getAttribute("data-field");
   state.session.sets[ex.name][si][field] = e.target.value;
+  saveSessionDraft();
 }
 
 // Re-render just the exercise card (and rebind its inputs) without touching
@@ -1818,7 +2062,7 @@ function updateSessionExerciseView() {
   navRow.innerHTML = `
     ${btn({ label: "← Previous", onclick: "prevEx", color: day.accent, outline: true, disabled: isFirst })}
     ${isLast
-      ? btn({ label: "✓ Finish Session", onclick: "finish", color: C_GREEN })
+      ? btn({ label: "✓ Finish Workout", onclick: "finish", color: C_GREEN })
       : btn({ label: "Next Exercise →", onclick: "nextEx", color: day.accent })
     }
   `;
@@ -1831,25 +2075,43 @@ function updateProgressAndChips() {
   const totalSets = allSets.length;
   const progress = totalSets > 0 ? (completedSets / totalSets) * 100 : 0;
 
-  const fill = document.getElementById("progress-fill");
-  const text = document.getElementById("progress-text");
-  if (fill) fill.style.width = progress + "%";
-  if (text) text.textContent = `${completedSets} / ${totalSets} sets completed`;
-
-  // Update nav chips
   const day = PLAN[session.dayKey];
   const exercises = getSessionExercises(session);
+  const completedExercises = exercises.filter(e => {
+    const s = session.sets[e.name] || [];
+    return s.length > 0 && s.every(x => x.done);
+  }).length;
+
+  const fill = document.getElementById("progress-fill");
+  if (fill) fill.style.width = progress + "%";
+
+  const exEl = document.getElementById("progress-ex");
+  if (exEl) exEl.innerHTML = `<strong>${completedExercises}/${exercises.length}</strong>&nbsp;exercises`;
+  const setsEl = document.getElementById("progress-sets");
+  if (setsEl) setsEl.innerHTML = `<strong>${completedSets}/${totalSets}</strong>&nbsp;sets`;
+
+  // Update nav chips
   const exNav = document.getElementById("ex-nav");
   if (exNav) exNav.innerHTML = exercises.map((e, i) => renderExChip(e, i, day, session)).join("")
     + `<button class="ex-chip" data-action="toggleAddExercise" style="background:${C_FAINT};color:${C_MUTED};border-color:${C_FAINT};font-weight:900">+ Add</button>`;
 }
 
 // ── Init ─────────────────────────────────────────────────────
+function restoreDraftSession() {
+  const draft = loadSessionDraft();
+  if (draft && PLAN[draft.dayKey]) {
+    state.session = draft;
+    state.currentEx = 0;
+    state.screen = "session";
+    return true;
+  }
+  return false;
+}
+
 async function init() {
   if (!SUPABASE_CONFIGURED) {
-    // Local-only mode — no cloud sync configured
     state.data = loadLocalData();
-    state.screen = "home";
+    if (!restoreDraftSession()) state.screen = "home";
     render();
     return;
   }
@@ -1862,7 +2124,7 @@ async function init() {
     state.user = session.user;
     state.authStatus = "authenticated";
     await syncFromSupabase();
-    state.screen = "home";
+    if (!restoreDraftSession()) state.screen = "home";
   } else {
     state.screen = "login";
   }
