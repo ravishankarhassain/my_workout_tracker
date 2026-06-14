@@ -596,7 +596,7 @@ function renderConfirmModal() {
   const { icon, title, message, yesLabel, noLabel, yesAction, danger } = state.confirmModal;
   const yesColor = danger ? "#EF4444" : C_GREEN;
   return `<div class="confirm-overlay" data-action="dismissModal">
-    <div class="confirm-modal" onclick="event.stopPropagation()">
+    <div class="confirm-modal" data-action="noop">
       ${icon ? `<div class="confirm-icon">${icon}</div>` : ""}
       <p class="confirm-title">${esc(title)}</p>
       <p class="confirm-msg">${esc(message)}</p>
@@ -967,7 +967,8 @@ function renderSession() {
         <span class="back-btn-arrow">←</span> Back
       </button>
       <div class="session-title-block">
-        <p class="session-heading-line"><span style="color:${day.accent};font-weight:800">${session.date} · ${day.label}</span> · ${day.focus}</p>
+        <p class="session-heading-date"><span style="color:${day.accent}">${session.date} · ${day.label}</span></p>
+        <p class="session-heading-focus">${day.focus}</p>
       </div>
     </div>
 
@@ -1768,6 +1769,8 @@ async function onAppClick(e) {
       }, 1600);
       break;
     }
+    case "noop":
+      break;
     case "dismissModal":
       state.confirmModal = null;
       render();
