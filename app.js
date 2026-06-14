@@ -1,5 +1,5 @@
 /* ============================================================
-   Lean Mass Tracker — Vanilla JS PWA
+   My Workout Tracker — Vanilla JS PWA
    ============================================================ */
 
 // ── Plan data ────────────────────────────────────────────────
@@ -573,12 +573,11 @@ function render() {
 
   if (["home", "calendar", "history", "progress"].includes(state.screen)) html += renderNav();
 
-  // Guide FAB + overlay + user avatar — accessible from every screen except loading/login
+  // Fixed app header + hamburger menu — all screens except loading/login
   if (!["loading", "login"].includes(state.screen)) {
-    const bottomOffset = ["home", "calendar", "history", "progress"].includes(state.screen) ? 94 : 20;
-    html += `<button data-action="toggleGuide" class="guide-fab" style="bottom:${bottomOffset}px" title="Tips & Guide">📖</button>`;
+    html += renderAppHeader();
     if (state.showGuide) html += renderGuideOverlay();
-    html += renderUserAvatar();
+    html += renderHamburgerMenu();
     html += renderConfirmModal();
   }
 
@@ -609,24 +608,21 @@ function renderConfirmModal() {
 }
 
 // ── User avatar button + dropdown menu ───────────────────────────
-function renderUserAvatar() {
+function renderAppHeader() {
+  return `<div class="app-header">
+    <span class="app-header-title">My Workout Tracker</span>
+  </div>`;
+}
+
+function renderHamburgerMenu() {
   const isLight = getTheme() === "light";
+  const pendingCount = (state.data.pendingSync || []).length;
 
-  let avatarContent, avatarClass;
-  if (state.user) {
-    const email = state.user.email || "";
-    avatarContent = (email[0] || "U").toUpperCase();
-    avatarClass = "user-avatar-btn";
-  } else {
-    avatarContent = "⚙";
-    avatarClass = "user-avatar-btn local-mode";
-  }
-
-  let html = `<button class="${avatarClass}" data-action="toggleUserMenu" title="Account &amp; Settings">${avatarContent}</button>`;
+  let html = `<button class="hamburger-btn" data-action="toggleUserMenu" title="Menu" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>`;
 
   if (!state.showUserMenu) return html;
-
-  const pendingCount = (state.data.pendingSync || []).length;
 
   html += `<div class="user-menu-overlay" data-action="closeUserMenu"></div>
   <div class="user-menu-panel">
@@ -642,6 +638,8 @@ function renderUserAvatar() {
 
   html += `</div>
     <div class="user-menu-body">
+      <button class="user-menu-btn" data-action="openGuide">📖 Tips &amp; Guidelines</button>
+      <div class="user-menu-divider"></div>
       <div class="user-menu-row">
         <span class="user-menu-row-label">☀️&nbsp; Light mode</span>
         <div class="toggle-switch ${isLight ? "on" : ""}" data-action="toggleTheme"><div class="toggle-knob"></div></div>
@@ -666,7 +664,7 @@ function renderUserAvatar() {
 function renderLogin() {
   return `<div class="page" style="padding-top:80px;text-align:center">
     <div style="font-size:48px;margin-bottom:12px">🏋️</div>
-    <h1 class="h1" style="margin-bottom:6px">Lean Mass Tracker</h1>
+    <h1 class="h1" style="margin-bottom:6px">My Workout Tracker</h1>
     <p style="color:${C_MUTED};font-size:13px;margin-bottom:24px;line-height:1.6">
       Sign in to sync your workout history, body weight, and custom exercises across devices.
     </p>
@@ -694,7 +692,7 @@ function renderNav() {
   return `<nav class="bottom-nav">
     <div class="nav-brand">
       <span class="nav-brand-icon">💪</span>
-      <span class="nav-brand-name">Lean Mass</span>
+      <span class="nav-brand-name">My Workout Tracker</span>
     </div>
     ${tabs.map(t => `
       <button class="nav-btn ${state.screen === t.id ? "active" : ""}" data-action="nav:${t.id}">
@@ -766,10 +764,6 @@ function renderHome() {
   const weekSessions = data.sessions.filter(s => new Date(s.date) >= weekAgo).length;
 
   let html = `<div class="page">
-    <div style="padding-right:52px">
-      <p class="eyebrow">Your 6-Week Plan</p>
-      <h1 class="h1">Lean Mass Tracker</h1>
-    </div>
 
     <div class="stats-row" style="margin-top:22px">
       <div class="stat-card"><p class="stat-value">${totalSessions}</p><p class="stat-label">Total Sessions</p></div>
@@ -961,7 +955,7 @@ function renderSession() {
   }).length;
   const totalExercises = exercises.length;
 
-  let html = `<div class="page" style="padding-top:16px">
+  let html = `<div class="page" style="padding-top:calc(56px + 12px)">
     <div class="session-header">
       <button data-action="exitSession" class="back-btn">
         <span class="back-btn-arrow">←</span> Back
@@ -1867,6 +1861,11 @@ async function onAppClick(e) {
       render();
       break;
     }
+    case "openGuide":
+      state.showUserMenu = false;
+      state.showGuide = true;
+      render();
+      break;
     case "toggleGuide":
       state.showGuide = !state.showGuide;
       render();

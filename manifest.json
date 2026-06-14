@@ -1,6 +1,6 @@
 {
-  "name": "Lean Mass Tracker",
-  "short_name": "Lean Mass",
+  "name": "My Workout Tracker",
+  "short_name": "My Workout",
   "description": "6-week full body workout tracker with weight, reps, and progress charts",
   "start_url": "./index.html",
   "scope": "./",
